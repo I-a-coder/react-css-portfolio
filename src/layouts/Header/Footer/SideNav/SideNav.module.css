@@ -1,0 +1,21 @@
+.drawerPaper {
+    width: 200px;
+    background: var(--background-gradient);
+    color: #f5e6f7;
+    border-right: 2px solid var(--secondary-color);
+  }
+  .menuButton {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 1300;
+  }
+  .navItem {
+    color: var(--primary-color);
+    font-weight: bold;
+    transition: background 0.2s;
+  }
+  .navItem:hover {
+    background: var(--secondary-color);
+    color: #1a0b1d;
+  }
