@@ -1,24 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { PageTitleProvider } from "./context/PageTitleContext";
+
+// Layout components
+import Header from "./components/Header";
+import SideNav from "./components/SideNav";
+import Footer from "./components/Footer";
+
+// Pages
+import Home from "./pages/Home";
+import Education from "./pages/Education";
+import Experience from "./pages/Experience";
+import Projects from "./pages/Projects";
+import Leadership from "./pages/Leadership";
+import Skills from "./pages/Skills";
+import Contact from "./pages/Contact";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <PageTitleProvider>
+      <Router>
+        <Header />
+        <SideNav />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/education" element={<Education />} />
+          <Route path="/experience" element={<Experience />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/leadership" element={<Leadership />} />
+          <Route path="/skills" element={<Skills />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+        <Footer />
+      </Router>
+    </PageTitleProvider>
   );
 }
 
