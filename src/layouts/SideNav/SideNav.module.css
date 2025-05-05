@@ -1,21 +1,48 @@
-.drawerPaper {
-    width: 200px;
-    background: var(--background-gradient);
-    color: #f5e6f7;
-    border-right: 2px solid var(--secondary-color);
+.sidenav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 220px;
+  height: 100%;
+  background: #1a0022;
+  color: #ff79c6;
+  transform: translateX(-100%);
+  transition: transform 0.3s;
+  z-index: 200;
+  padding-top: 2rem;
+  box-shadow: 2px 0 8px #0004;
+  display: block;
+}
+.open {
+  transform: translateX(0);
+}
+.closeBtn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: #ff79c6;
+  font-size: 2rem;
+  cursor: pointer;
+}
+.navLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-left: 2rem;
+}
+.navLinks a {
+  color: #ff79c6;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: color 0.2s;
+}
+.navLinks a:hover {
+  color: #bd93f9;
+}
+@media (min-width: 769px) {
+  .sidenav {
+    display: none;
   }
-  .menuButton {
-    position: fixed;
-    top: 1rem;
-    left: 1rem;
-    z-index: 1300;
-  }
-  .navItem {
-    color: var(--primary-color);
-    font-weight: bold;
-    transition: background 0.2s;
-  }
-  .navItem:hover {
-    background: var(--secondary-color);
-    color: #1a0b1d;
-  }
+}
