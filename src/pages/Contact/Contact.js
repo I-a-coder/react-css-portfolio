@@ -1,185 +1,106 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Alert from "@mui/material/Alert";
 import Link from "@mui/material/Link";
-import { usePageTitle } from "../../context/PageTitleContext";
+import * as yup from "yup";
+import { useFormik } from "formik";
+import CustomInput from "../../components/CustomInput/CustomInput";
 import styles from "./Contact.module.css";
 
+// Contact information data
+const contactInfo = [
+  {
+    type: "Email",
+    value: "sadiashafeeq3333@gmail.com",
+    href: "mailto:sadiashafeeq3333@gmail.com"
+  },
+  {
+    type: "LinkedIn",
+    value: "linkedin.com/in/sadia-shafeeq-a9bbb5299",
+    href: "https://www.linkedin.com/in/sadia-shafeeq-a9bbb5299/"
+  },
+  {
+    type: "GitHub",
+    value: "github.com/I-a-coder",
+    href: "https://github.com/I-a-coder"
+  }
+];
+
+// Form validation schema
+const validationSchema = yup.object({
+  name: yup.string().required("Name is required").min(2, "Name must be at least 2 characters"),
+  email: yup.string().email("Enter a valid email").required("Email is required"),
+  message: yup.string().required("Message is required").min(10, "Message must be at least 10 characters")
+});
+
 function Contact() {
-  // State for form data
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: ""
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const formik = useFormik({
+    initialValues: { name: "", email: "", message: "" },
+    validationSchema,
+    onSubmit: (values) => {
+      console.log("Form submitted:", values);
+      setIsSubmitted(true);
+      formik.resetForm();
+      setTimeout(() => setIsSubmitted(false), 3000);
+    }
   });
 
-  // State for form submission
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [errors, setErrors] = useState({});
+  const renderContactInfo = () => (
+    <Box className={styles.contactInfo}>
+      {contactInfo.map((info, index) => (
+        <Typography key={index} variant="body1" className={styles.link}>
+          {info.type}:{" "}
+          <Link href={info.href} target="_blank" rel="noopener noreferrer" className={styles.link}>
+            {info.value}
+          </Link>
+        </Typography>
+      ))}
+    </Box>
+  );
 
-  // Get setTitle from PageTitleContext
-  const { setTitle } = usePageTitle();
+  const renderForm = () => (
+    <Box component="form" onSubmit={formik.handleSubmit} className={styles.form}>
+      {isSubmitted && <Alert severity="success" className={styles.alert}>Message sent successfully!</Alert>}
 
-  // Set page title when component loads
-  useEffect(() => {
-    setTitle("Contact");
-  }, [setTitle]);
+      {["name", "email", "message"].map((field) => (
+        <div key={field}>
+          <CustomInput
+            label={field.charAt(0).toUpperCase() + field.slice(1)}
+            name={field}
+            type={field === "email" ? "email" : field === "message" ? "textarea" : "text"}
+            value={formik.values[field]}
+            onChange={formik.handleChange}
+            required
+          />
+          {formik.touched[field] && formik.errors[field] && (
+            <Typography color="error" variant="caption" className={styles.errorText}>
+              {formik.errors[field]}
+            </Typography>
+          )}
+        </div>
+      ))}
 
-  // Handle input changes
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prevState => ({
-      ...prevState,
-      [name]: value
-    }));
-  };
-
-  // Simple validation function
-  const validateForm = () => {
-    const newErrors = {};
-    
-    if (!formData.name.trim()) {
-      newErrors.name = "Name is required";
-    }
-    
-    if (!formData.email.trim()) {
-      newErrors.email = "Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Email is invalid";
-    }
-    
-    if (!formData.message.trim()) {
-      newErrors.message = "Message is required";
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  // Handle form submission
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    
-    if (validateForm()) {
-      // Here you would typically send the data to a server
-      console.log("Form submitted:", formData);
-      
-      // Show success message
-      setIsSubmitted(true);
-      
-      // Clear form
-      setFormData({
-        name: "",
-        email: "",
-        message: ""
-      });
-      
-      // Hide success message after 3 seconds
-      setTimeout(() => {
-        setIsSubmitted(false);
-      }, 3000);
-    }
-  };
+      <Button 
+        type="submit" 
+        variant="contained" 
+        className={styles.button}
+        disabled={formik.isSubmitting}
+      >
+        Send Message
+      </Button>
+    </Box>
+  );
 
   return (
-    <Box component="section" className={styles.container}>
-      <Typography variant="h2" component="h1" className={styles.title}>
-        Contact Me
-      </Typography>
-
+    <Box className={styles.container}>
+      <Typography variant="h2" className={styles.title}>Contact Me</Typography>
       <Box className={styles.content}>
-        {/* Contact Information */}
-        <Box className={styles.contactInfo}>
-          <Typography variant="body1" className={styles.link}>
-            Email:{" "}
-            <Link href="mailto:sadiashafeeq3333@gmail.com" className={styles.link}>
-              sadiashafeeq3333@gmail.com
-            </Link>
-          </Typography>
-          
-          <Typography variant="body1" className={styles.link}>
-            LinkedIn:{" "}
-            <Link
-              href="https://www.linkedin.com/in/sadia-shafeeq-a9bbb5299/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.link}
-            >
-              linkedin.com/in/sadia-shafeeq-a9bbb5299
-            </Link>
-          </Typography>
-          
-          <Typography variant="body1" className={styles.link}>
-            GitHub:{" "}
-            <Link
-              href="https://github.com/I-a-coder"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.link}
-            >
-              github.com/I-a-coder
-            </Link>
-          </Typography>
-        </Box>
-
-        {/* Contact Form */}
-        <Box component="form" onSubmit={handleSubmit} className={styles.form}>
-          {isSubmitted && (
-            <Alert severity="success" className={styles.alert}>
-              Message sent successfully!
-            </Alert>
-          )}
-
-          <TextField
-            fullWidth
-            margin="normal"
-            label="Name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            error={!!errors.name}
-            helperText={errors.name}
-            className={styles.input}
-          />
-
-          <TextField
-            fullWidth
-            margin="normal"
-            label="Email"
-            name="email"
-            type="email"
-            value={formData.email}
-            onChange={handleChange}
-            error={!!errors.email}
-            helperText={errors.email}
-            className={styles.input}
-          />
-
-          <TextField
-            fullWidth
-            margin="normal"
-            label="Message"
-            name="message"
-            multiline
-            rows={4}
-            value={formData.message}
-            onChange={handleChange}
-            error={!!errors.message}
-            helperText={errors.message}
-            className={styles.input}
-          />
-
-          <Button 
-            type="submit" 
-            variant="contained" 
-            className={styles.button}
-          >
-            Send Message
-          </Button>
-        </Box>
+        {renderContactInfo()}
+        {renderForm()}
       </Box>
     </Box>
   );

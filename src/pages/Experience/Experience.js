@@ -2,9 +2,6 @@ import React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
-import Header from "../../layouts/Header/Header";
-import Footer from "../../layouts/Footer/Footer";
-import Sidenav from "../../layouts/Sidenav/Sidenav";
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
 import styles from "./Experience.module.css";
 
@@ -33,28 +30,23 @@ const experiences = [
 
 function Experience() {
   return (
-    <>
-      <Header />
-      <Sidenav />
-      <Box className={styles.container}>
-        <Typography variant="h2" className={styles.title}>
-          Professional Experience
-        </Typography>
-        <Grid container spacing={3} className={styles.gridContainer}>
-          {experiences.map((exp, idx) => (
-            <Grid item xs={12} sm={6} key={idx}>
-              <ProjectCard
-                title={exp.title}
-                description={exp.description}
-                link={exp.link}
-                linkText={exp.linkText}
-              />
-            </Grid>
-          ))}
-        </Grid>
-      </Box>
-      <Footer />
-    </>
+    <Box className={styles.container}>
+      <Typography variant="h2" className={styles.title}>
+        Professional Experience
+      </Typography>
+      <Grid container spacing={3} className={styles.gridContainer}>
+        {experiences.map((exp, idx) => (
+          <Grid item xs={12} sm={6} key={idx}>
+            <ProjectCard
+              title={exp.title}
+              description={exp.description}
+              link={exp.link}
+              linkText={exp.linkText}
+            />
+          </Grid>
+        ))}
+      </Grid>
+    </Box>
   );
 }
 

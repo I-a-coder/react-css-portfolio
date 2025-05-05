@@ -2,101 +2,45 @@ import React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
-import Paper from "@mui/material/Paper";
+import ProjectCard from "../../components/ProjectCard/ProjectCard";
+import styles from "./Leadership.module.css";
 
-const leaderships = [
+const leadershipRoles = [
   {
-    title: "Founder & Lead",
-    subtitle: "CODE CRUSHERS (2024 - Present)",
-    details: [
-      "Founded and manage a coding platform fostering technical skill development.",
-      "Organized and led successful GitHub workshop sessions.",
-    ],
+    title: "Technical Lead",
+    description: "Led a team of developers in implementing a file management system. Coordinated development efforts and ensured code quality standards.",
+    link: "#",
+    linkText: "View Details"
   },
   {
-    title: "Student Ambassador",
-    subtitle: "Search Opal",
-    details: [
-      "Represent and promote technical initiatives within the academic community.",
-      "Facilitate technical learning sessions and community engagement.",
-    ],
+    title: "Project Manager",
+    description: "Managed the development of a nutrition tracking app. Oversaw project timelines, resource allocation, and stakeholder communication.",
+    link: "#",
+    linkText: "View Details"
   },
   {
-    title: "AICP Society Member",
-    details: [
-      "Participate in AI research initiatives and event organization.",
-      "Contribute to internship programs and technical workshops.",
-    ],
-  },
-  {
-    title: "Islamic Society Member",
-    details: [
-      "Create and manage digital media content for Islamic awareness.",
-      "Organize and facilitate educational webinars.",
-    ],
-  },
-  {
-    title: "Kaar-e-Kamal Welfare Foundation",
-    details: [
-      "Conduct donation drives and case investigations.",
-      "Manage data collection and stakeholder communication.",
-    ],
-  },
+    title: "Team Lead",
+    description: "Led a team in developing an AR-based navigation system. Facilitated team collaboration and technical decision-making.",
+    link: "#",
+    linkText: "View Details"
+  }
 ];
 
 function Leadership() {
   return (
-    <Box
-      sx={{
-        textAlign: "center",
-        background: "linear-gradient(135deg, #2a042a, #3b1040)",
-        padding: "50px 0",
-        minHeight: "60vh",
-      }}
-    >
-      <Typography
-        variant="h2"
-        sx={{
-          color: "#ff79c6",
-          borderBottom: "2px solid #ff79c6",
-          display: "inline-block",
-          paddingBottom: "5px",
-          marginBottom: "20px",
-          fontSize: "2rem",
-        }}
-      >
-        Leadership & Community Initiatives
+    <Box className={styles.container}>
+      <Typography variant="h2" className={styles.title}>
+        Leadership Experience
       </Typography>
-      <Grid container spacing={3} sx={{ maxWidth: 900, margin: "30px auto 0 auto" }}>
-        {leaderships.map((item, idx) => (
+      <Grid container spacing={3} className={styles.gridContainer}>
+        {leadershipRoles.map((role, idx) => (
           <Grid item xs={12} sm={6} key={idx}>
-            <Paper
-              elevation={4}
-              sx={{
-                backgroundColor: "#240e26",
-                color: "#f5e6f7",
-                borderRadius: "12px",
-                boxShadow: "0px 5px 15px rgba(255, 20, 147, 0.3)",
-                padding: "20px",
-                marginBottom: "20px",
-                textAlign: "left",
-                border: "2px solid #bd93f9",
-              }}
-            >
-              <Typography variant="h5" sx={{ color: "#ff79c6" }}>
-                {item.title}
-              </Typography>
-              {item.subtitle && (
-                <Typography variant="subtitle1" sx={{ color: "#bd93f9" }}>
-                  {item.subtitle}
-                </Typography>
-              )}
-              <ul>
-                {item.details.map((detail, i) => (
-                  <li key={i} style={{ color: "#bd93f9" }}>{detail}</li>
-                ))}
-              </ul>
-            </Paper>
+            <ProjectCard
+              title={role.title}
+              description={role.description}
+              link={role.link}
+              linkText={role.linkText}
+            />
           </Grid>
         ))}
       </Grid>

@@ -2,9 +2,8 @@ import React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import Button from "@mui/material/Button";
+import ProjectCard from "../../components/ProjectCard/ProjectCard";
+import styles from "./Projects.module.css";
 
 const projects = [
   {
@@ -53,73 +52,19 @@ const projects = [
 
 function Projects() {
   return (
-    <Box
-      sx={{
-        background: "linear-gradient(135deg, #2a042a, #3b1040)",
-        minHeight: "60vh",
-        padding: "50px 0",
-      }}
-    >
-      <Typography
-        variant="h2"
-        align="center"
-        sx={{
-          color: "#ff79c6",
-          borderBottom: "2px solid #ff79c6",
-          display: "inline-block",
-          paddingBottom: "5px",
-          marginBottom: "20px",
-          fontSize: "2rem",
-        }}
-      >
+    <Box className={styles.container}>
+      <Typography variant="h2" className={styles.title}>
         Projects
       </Typography>
-      <Grid container spacing={4} sx={{ maxWidth: 1200, margin: "30px auto 0 auto" }}>
+      <Grid container spacing={4} className={styles.gridContainer}>
         {projects.map((project, idx) => (
           <Grid item xs={12} sm={6} md={4} key={idx}>
-            <Card
-              elevation={6}
-              sx={{
-                backgroundColor: "#240e26",
-                color: "#f5e6f7",
-                borderRadius: "12px",
-                boxShadow: "0px 5px 15px rgba(255, 20, 147, 0.3)",
-                transition: "transform 0.3s, box-shadow 0.3s",
-                "&:hover": {
-                  transform: "translateY(-5px)",
-                  boxShadow: "0px 10px 25px rgba(189, 147, 249, 0.3)",
-                },
-                minHeight: "200px",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "space-between",
-              }}
-            >
-              <CardContent>
-                <Typography variant="h5" sx={{ color: "#ff79c6" }}>
-                  {project.title}
-                </Typography>
-                <Typography variant="body2" sx={{ color: "#bd93f9", mb: 2 }}>
-                  {project.description}
-                </Typography>
-                <Button
-                  variant="outlined"
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  sx={{
-                    borderColor: "#ff79c6",
-                    color: "#ff79c6",
-                    "&:hover": {
-                      backgroundColor: "#ff79c6",
-                      color: "#1a0b1d",
-                    },
-                  }}
-                >
-                  {project.linkText}
-                </Button>
-              </CardContent>
-            </Card>
+            <ProjectCard
+              title={project.title}
+              description={project.description}
+              link={project.link}
+              linkText={project.linkText}
+            />
           </Grid>
         ))}
       </Grid>

@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import LinearProgress from "@mui/material/LinearProgress";
 import Paper from "@mui/material/Paper";
+import { usePageTitle } from "../../context/PageTitleContext";
+import styles from "./Skills.module.css";
 
 const skills = [
   {
@@ -55,70 +57,36 @@ const skills = [
 ];
 
 function Skills() {
+  const { setTitle } = usePageTitle();
+
+  useEffect(() => {
+    setTitle('Skills');
+  }, [setTitle]);
+
   return (
-    <Box
-      sx={{
-        background: "linear-gradient(135deg, #2a042a, #3b1040)",
-        minHeight: "60vh",
-        padding: "50px 0",
-        textAlign: "center",
-      }}
-    >
-      <Typography
-        variant="h2"
-        sx={{
-          color: "#ff79c6",
-          borderBottom: "2px solid #ff79c6",
-          display: "inline-block",
-          paddingBottom: "5px",
-          marginBottom: "20px",
-          fontSize: "2rem",
-        }}
-      >
+    <Box className={styles.container}>
+      <Typography variant="h2" className={styles.title}>
         Skills
       </Typography>
-      <Box sx={{ maxWidth: 700, mx: "auto", mt: 4 }}>
-        {skills.map((cat, idx) => (
-          <Paper
-            key={idx}
-            elevation={3}
-            sx={{
-              backgroundColor: "#240e26",
-              color: "#f5e6f7",
-              borderRadius: "12px",
-              boxShadow: "0px 5px 15px rgba(255, 20, 147, 0.3)",
-              padding: "20px",
-              marginBottom: "30px",
-              textAlign: "left",
-              border: "2px solid #bd93f9",
-            }}
-          >
-            <Typography variant="h5" sx={{ color: "#ff79c6", mb: 2 }}>
-              {cat.category}
+      <Box className={styles.skillsContainer}>
+        {skills.map((category, idx) => (
+          <Paper key={idx} className={styles.skillCard}>
+            <Typography variant="h6" className={styles.categoryTitle}>
+              {category.category}
             </Typography>
-            {cat.items.map((item, i) => (
-              <Box key={i} sx={{ mb: 2 }}>
-                <Typography variant="body1" sx={{ color: "#bd93f9" }}>
-                  {item.name}
+            {category.items.map((skill, skillIdx) => (
+              <Box key={skillIdx} className={styles.skillItem}>
+                <Typography variant="body1" className={styles.skillName}>
+                  {skill.name}
                 </Typography>
                 <LinearProgress
                   variant="determinate"
-                  value={item.value}
-                  color={item.color}
-                  sx={{
-                    height: 10,
-                    borderRadius: 5,
-                    backgroundColor: "#3b1040",
-                    "& .MuiLinearProgress-bar": {
-                      borderRadius: 5,
-                    },
-                  }}
+                  value={skill.value}
+                  color={skill.color}
+                  className={styles.progressBar}
                 />
-                <Typography
-                  variant="caption"
-                  sx={{ color: "#ff79c6", float: "right" }}
-                >
-                  {item.value}%
+                <Typography variant="body2" className={styles.skillPercentage}>
+                  {skill.value}%
                 </Typography>
               </Box>
             ))}

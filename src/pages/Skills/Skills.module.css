@@ -1,0 +1,115 @@
+.container {
+  text-align: center;
+  background: linear-gradient(135deg, #2a042a, #3b1040);
+  padding: 50px 0;
+  min-height: 60vh;
+  margin-left: 240px;
+  position: relative;
+  overflow: hidden;
+}
+
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, rgba(255, 121, 198, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+@media (max-width: 600px) {
+  .container {
+    margin-left: 0;
+    padding: 30px 15px;
+  }
+}
+
+.title {
+  color: #ff79c6;
+  border-bottom: 2px solid #ff79c6;
+  display: inline-block;
+  padding-bottom: 5px;
+  margin-bottom: 20px;
+  font-size: 2rem;
+  position: relative;
+  text-shadow: 0 0 10px rgba(255, 121, 198, 0.3);
+}
+
+.title::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ff79c6, transparent);
+}
+
+.skillsContainer {
+  max-width: 700px;
+  margin: 30px auto 0 auto;
+  padding: 0 20px;
+}
+
+.skillCard {
+  background-color: #240e26;
+  color: #f5e6f7;
+  border-radius: 12px;
+  box-shadow: 0px 5px 15px rgba(255, 20, 147, 0.3);
+  padding: 20px;
+  margin-bottom: 30px;
+  text-align: left;
+  border: 2px solid #bd93f9;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.skillCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 10px 25px rgba(189, 147, 249, 0.3);
+}
+
+.categoryTitle {
+  color: #ff79c6;
+  margin-bottom: 20px;
+}
+
+.skillItem {
+  margin-bottom: 20px;
+}
+
+.skillName {
+  color: #bd93f9;
+  margin-bottom: 5px;
+}
+
+.progressBar {
+  height: 10px !important;
+  border-radius: 5px !important;
+  background-color: #3b1040 !important;
+}
+
+.progressBar > div {
+  border-radius: 5px !important;
+}
+
+.skillPercentage {
+  color: #ff79c6;
+  float: right;
+  font-size: 0.875rem;
+}
+
+@media (max-width: 600px) {
+  .skillsContainer {
+    padding: 0 10px;
+  }
+  
+  .title {
+    font-size: 1.5rem;
+  }
+  
+  .skillCard {
+    padding: 15px;
+  }
+}
