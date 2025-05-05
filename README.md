@@ -7,22 +7,22 @@ A beginner-friendly personal portfolio built using **React** and **CSS**. It inc
 ##  Screenshots
 
 ###  Home Page
-![Home Page](public/Assets/Home.png)
+![Home Page](public/Assests/Home.png)
 
 ###  Projects Page
-![Projects](public/Assets/Projects.png)
+![Projects](public/Assests/Projects.png)
 
 ###  Contact Page
-![Contact](public/assets/Contact.png)
+![Contact](public/AsseSts/Contact.png)
 
 ###  Education Page
-![Education](public/Assets/Education.png)
+![Education](public/AsseSts/Education.png)
 
 ###  Skills Page
-![Skills](public/Assets/Skills.png)
+![Skills](public/AsseSts/Skills.png)
 
 ### Experience Page
-![Experience](public/Assets/Experience.png)
+![Experience](public/AsseSts/Experience.png)
 
 
 ##  Tech Stack
