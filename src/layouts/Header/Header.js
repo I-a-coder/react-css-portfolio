@@ -1,37 +1,26 @@
-import React, { useState } from "react";
-import styles from "./Header.module.css";
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import IconButton from "@mui/material/IconButton";
-import Avatar from "@mui/material/Avatar";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
+import React from 'react';
+import ThemeToggle from '../ThemeToggle/ThemeToggle';
+import styles from './Header.module.css';
 
-function Header() {
-  const [anchorEl, setAnchorEl] = useState(null);
-
-  const handleMenu = (event) => setAnchorEl(event.currentTarget);
-  const handleClose = () => setAnchorEl(null);
-
+function Header({ onMenuClick }) {
   return (
-    <AppBar position="static" className={styles.header}>
-      <Toolbar>
-        <Typography variant="h6" className={styles.title}>
-          My Portfolio
-        </Typography>
-        <IconButton onClick={handleMenu} color="inherit">
-          <Avatar alt="Profile" src="/assets/images/profile.jpg" className={styles.avatar} />
-        </IconButton>
-        <Menu
-          anchorEl={anchorEl}
-          open={Boolean(anchorEl)}
-          onClose={handleClose}
-        >
-          <MenuItem onClick={handleClose}>Logout (placeholder)</MenuItem>
-        </Menu>
-      </Toolbar>
-    </AppBar>
+    <header className={styles.header}>
+      <div className={styles.logo}>Sadia Shafeeq</div>
+      <nav className={styles.navbar}>
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/education">Education</a>
+        <a href="/experience">Experience</a>
+        <a href="/projects">Projects</a>
+        <a href="/leadership">Leadership</a>
+        <a href="/skills">Skills</a>
+        <a href="/contact">Contact</a>
+      </nav>
+      <button className={styles.menuBtn} onClick={onMenuClick} aria-label="Open menu">
+        ☰
+      </button>
+      <ThemeToggle />
+    </header>
   );
 }
 
