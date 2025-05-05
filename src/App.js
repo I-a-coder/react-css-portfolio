@@ -8,13 +8,13 @@ import SideNav from "./components/SideNav";
 import Footer from "./components/Footer";
 
 // Pages
-import Home from "./pages/Home";
-import Education from "./pages/Education";
-import Experience from "./pages/Experience";
-import Projects from "./pages/Projects";
-import Leadership from "./pages/Leadership";
-import Skills from "./pages/Skills";
-import Contact from "./pages/Contact";
+import Home from "./pages/Home/Home";
+import Education from "./pages/Education/Education";
+import Experience from "./pages/Experience/Experience";
+import Projects from "./pages/Projects/Projects";
+import Leadership from "./pages/Leadership/Leadership";
+import Skills from "./pages/Skills/Skills";
+import Contact from "./pages/Contact/Contact";
 
 function App() {
   return (

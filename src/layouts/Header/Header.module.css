@@ -1,0 +1,16 @@
+.header {
+    background-color: var(--primary-color);
+  }
+  .title {
+    flex-grow: 1;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+  .avatar {
+    border: 2px solid var(--secondary-color);
+    box-shadow: 0 0 10px var(--primary-color);
+    transition: transform 0.3s;
+  }
+  .avatar:hover {
+    transform: scale(1.1);
+  }

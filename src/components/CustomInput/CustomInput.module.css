@@ -1,0 +1,22 @@
+.inputGroup {
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+  }
+  .label {
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-bottom: 4px;
+  }
+  .input {
+    border: 1px solid var(--secondary-color);
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 1rem;
+    background: #240e26;
+    color: #f5e6f7;
+    margin-top: 4px;
+  }
+  .input:focus {
+    outline: 2px solid var(--primary-color);
+  }
