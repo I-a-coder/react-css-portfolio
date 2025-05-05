@@ -57,11 +57,11 @@ const skills = [
 ];
 
 function Skills() {
-  const { setTitle } = usePageTitle();
+  const { setPageTitle } = usePageTitle();
 
   useEffect(() => {
-    setTitle('Skills');
-  }, [setTitle]);
+    setPageTitle('Skills');
+  }, [setPageTitle]);
 
   return (
     <Box className={styles.container}>

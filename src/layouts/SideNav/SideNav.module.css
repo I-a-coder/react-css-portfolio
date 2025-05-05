@@ -1,47 +1,71 @@
 .sidenav {
   position: fixed;
-  top: 0;
   left: 0;
-  width: 220px;
-  height: 100%;
-  background: #1a0022;
-  color: #ff79c6;
-  transform: translateX(-100%);
-  transition: transform 0.3s;
-  z-index: 200;
-  padding-top: 2rem;
-  box-shadow: 2px 0 8px #0004;
-  display: block;
+  top: 64px; /* Header height */
+  height: calc(100vh - 64px);
+  width: 240px;
+  z-index: 10;
+  transition: all 0.3s ease;
+  padding: 2rem 0;
+  overflow-y: auto;
 }
-.open {
-  transform: translateX(0);
+
+.darkSidenav {
+  background-color: var(--bg-secondary);
+  border-right: 1px solid var(--card-border);
 }
-.closeBtn {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: none;
-  border: none;
-  color: #ff79c6;
-  font-size: 2rem;
-  cursor: pointer;
+
+.lightSidenav {
+  background-color: var(--bg-secondary);
+  border-right: 1px solid var(--card-border);
 }
+
 .navLinks {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  margin-left: 2rem;
+  gap: 0.5rem;
+  padding: 0 1.5rem;
 }
-.navLinks a {
-  color: #ff79c6;
+
+.navLink {
+  display: block;
+  padding: 0.75rem 1rem;
+  color: var(--text-primary);
   text-decoration: none;
-  font-size: 1.1rem;
-  transition: color 0.2s;
+  border-radius: var(--border-radius);
+  transition: all 0.2s ease;
+  font-weight: 500;
 }
-.navLinks a:hover {
-  color: #bd93f9;
+
+.navLink:hover {
+  background-color: rgba(128, 128, 128, 0.1);
+  color: var(--primary-color);
 }
-@media (min-width: 769px) {
+
+.activeLink {
+  background-color: rgba(var(--primary-color-rgb), 0.1);
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+/* Tablet styles */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .sidenav {
+    width: 200px;
+  }
+  
+  .navLinks {
+    padding: 0 1rem;
+  }
+  
+  .navLink {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.95rem;
+  }
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
   .sidenav {
     display: none;
   }
