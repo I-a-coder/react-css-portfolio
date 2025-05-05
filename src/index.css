@@ -12,3 +12,12 @@ body {
   background: var(--background-dark);
   color: #f5e6f7;
 }
+
+body.dark {
+  background: #181018;
+  color: #fff;
+}
+body.light {
+  background: #fff;
+  color: #181018;
+}
