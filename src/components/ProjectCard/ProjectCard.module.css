@@ -1,32 +1,126 @@
 .card {
-    background: var(--background-gradient);
-    color: #f5e6f7;
-    border-radius: 12px;
-    box-shadow: 0px 5px 15px var(--primary-color);
-    border: 2px solid var(--secondary-color);
-    padding: 20px;
-    margin-bottom: 20px;
-    transition: transform 0.3s, box-shadow 0.3s;
+  border-radius: var(--border-radius);
+  padding: 20px;
+  margin-bottom: 24px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: 100%;
+}
+
+.darkCard {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.lightCard {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.darkCard:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+.lightCard:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.imageContainer {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.card:hover .image {
+  transform: scale(1.05);
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 1.25rem;
+  margin-bottom: 12px;
+  color: var(--text-primary);
+}
+
+.description {
+  flex: 1;
+  margin-bottom: 20px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.button {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: var(--border-radius);
+  font-weight: 500;
+  text-align: center;
+  margin-top: auto;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.darkButton {
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+
+.lightButton {
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+
+.darkButton:hover {
+  background-color: var(--primary-color);
+  color: var(--bg-primary);
+}
+
+.lightButton:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+/* Responsive styles */
+.mobileCard {
+  padding: 16px;
+}
+
+@media (max-width: 768px) {
+  .imageContainer {
+    height: 160px;
   }
-  .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 10px 25px var(--secondary-color);
-  }
+  
   .title {
-    color: var(--primary-color);
+    font-size: 1.1rem;
   }
-  .description {
-    color: var(--secondary-color);
-  }
+  
   .button {
-    border: 1px solid var(--primary-color);
-    color: var(--primary-color);
-    padding: 6px 16px;
-    border-radius: 4px;
-    text-decoration: none;
-    transition: background 0.2s, color 0.2s;
+    padding: 6px 12px;
+    font-size: 0.9rem;
   }
-  .button:hover {
-    background: var(--primary-color);
-    color: var(--background-dark);
-  }
+}

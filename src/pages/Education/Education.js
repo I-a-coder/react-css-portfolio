@@ -5,11 +5,11 @@ import { Typography } from '@mui/material';
 import styles from './Education.module.css';
 
 function Education() {
-  const { setTitle } = usePageTitle();
+  const { setPageTitle } = usePageTitle();
 
   useEffect(() => {
-    setTitle('Education');
-  }, [setTitle]);
+    setPageTitle('Education');
+  }, [setPageTitle]);
 
   const columns = ['Degree', 'Institute', 'Year'];
   const rows = [
@@ -27,4 +27,4 @@ function Education() {
   );
 }
 
-export default Education;
+export default Education; 

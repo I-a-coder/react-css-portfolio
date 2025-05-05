@@ -1,47 +1,107 @@
 .header {
-  width: 100%;
-  background: #1a0022;
+  height: 64px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.darkHeader {
+  background-color: #1a1a1a;
+  color: #f5f5f5;
+}
+
+.lightHeader {
+  background-color: #ffffff;
+  color: #333;
+}
+
+.toolbar {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 0.5rem 0;
-  position: fixed;
-  top: 0;
-  z-index: 100;
+  width: 100%;
 }
-.logo {
-  color: #ff79c6;
-  font-size: 1.5rem;
-  margin-left: 2rem;
-  font-weight: bold;
-}
-.navbar {
+
+.navLinks {
   display: flex;
   gap: 1.5rem;
+  flex-grow: 1;
 }
-.navbar a {
-  color: #ff79c6;
+
+.link {
+  color: inherit;
   text-decoration: none;
-  font-size: 1rem;
-  transition: color 0.2s;
+  font-weight: 500;
+  padding: 0.5rem 0;
+  transition: all 0.2s ease;
+  position: relative;
 }
-.navbar a:hover {
-  color: #bd93f9;
+
+.link:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: currentColor;
+  transition: width 0.3s;
 }
-.menuBtn {
-  display: none;
-  background: none;
-  border: none;
-  color: #ff79c6;
-  font-size: 2rem;
-  cursor: pointer;
+
+.link:hover:after {
+  width: 100%;
+}
+
+.menuButton {
   margin-right: 1rem;
 }
+
+.mobileMenu {
+  width: 250px;
+}
+
+.darkDrawer {
+  background-color: #1a1a1a;
+  color: #f5f5f5;
+}
+
+.lightDrawer {
+  background-color: #ffffff;
+  color: #333;
+}
+
+.drawerHeader {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.mobileLink {
+  padding: 0.75rem 1rem;
+}
+
+.mobileNavLink {
+  color: inherit;
+  text-decoration: none;
+  font-weight: 500;
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0;
+}
+
+/* Responsive styles */
 @media (max-width: 768px) {
-  .navbar {
+  .navLinks {
     display: none;
   }
-  .menuBtn {
-    display: block;
+  
+  .header {
+    padding: 0;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .navLinks {
+    gap: 1rem;
   }
 }
