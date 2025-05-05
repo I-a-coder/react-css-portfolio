@@ -13,16 +13,16 @@ A beginner-friendly personal portfolio built using **React** and **CSS**. It inc
 ![Projects](public/Assests/Projects.png)
 
 ###  Contact Page
-![Contact](public/AsseSts/Contact.png)
+![Contact](public/Assests/Contact.png)
 
 ###  Education Page
-![Education](public/AsseSts/Education.png)
+![Education](public/Assests/Education.png)
 
 ###  Skills Page
-![Skills](public/AsseSts/Skills.png)
+![Skills](public/Assests/Skills.png)
 
 ### Experience Page
-![Experience](public/AsseSts/Experience.png)
+![Experience](public/Assests/Experience.png)
 
 
 ##  Tech Stack
